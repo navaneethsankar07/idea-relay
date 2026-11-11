@@ -1,0 +1,1 @@
+# IdeaRelay Django Configuration

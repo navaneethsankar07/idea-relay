@@ -1,0 +1,105 @@
+name: CI
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-frontend-dashboard:
+    name: Frontend Dashboard (Lint & Test)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: frontend/dashboard/package-lock.json
+
+      - name: Install Dependencies
+        run: cd frontend/dashboard && npm ci
+
+      - name: Lint
+        run: cd frontend/dashboard && npm run lint
+
+      - name: Run Tests
+        run: cd frontend/dashboard && npm test
+
+      - name: Build
+        run: cd frontend/dashboard && npm run build
+
+  test-frontend-widget:
+    name: Frontend Widget (Test & Build)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: frontend/widget/package-lock.json
+
+      - name: Install Dependencies
+        run: cd frontend/widget && npm ci
+
+      - name: Run Tests
+        run: cd frontend/widget && npm test
+
+      - name: Build
+        run: cd frontend/widget && npm run build
+
+  test-backend-django:
+    name: Backend Django (Check, Lint & Test)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r backend/django/requirements-dev.txt
+
+      - name: Django System Checks
+        run: cd backend/django && python manage.py check
+
+      - name: Ruff Lint
+        run: cd backend/django && ruff check .
+
+      - name: Pytest
+        run: cd backend/django && pytest
+
+  test-backend-realtime:
+    name: Backend Realtime (Lint, Test & Build)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: backend/realtime/package-lock.json
+
+      - name: Install Dependencies
+        run: cd backend/realtime && npm ci
+
+      - name: Lint
+        run: cd backend/realtime && npm run lint
+
+      - name: Run Tests
+        run: cd backend/realtime && npm test
+
+      - name: Build
+        run: cd backend/realtime && npm run build

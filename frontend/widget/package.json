@@ -1,0 +1,26 @@
+{
+  "name": "@idearelay/widget",
+  "version": "0.1.0",
+  "description": "Embeddable lightweight feedback widget for IdeaRelay",
+  "main": "dist/widget.umd.js",
+  "module": "dist/widget.es.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "cross-env CHOKIDAR_USEPOLLING=true vite",
+    "build": "tsc && vite build",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.5",
+    "cross-env": "^7.0.3",
+    "jsdom": "^29.1.1",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.8",
+    "vite-plugin-dts": "^4.2.2",
+    "vitest": "^2.1.3"
+  }
+}

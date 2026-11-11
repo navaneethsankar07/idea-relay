@@ -1,0 +1,18 @@
+{
+  "name": "idearelay-root",
+  "private": true,
+  "description": "IdeaRelay Monorepo Root",
+  "scripts": {
+    "dev:dashboard": "npm --prefix frontend/dashboard run dev",
+    "dev:realtime": "npm --prefix backend/realtime run dev",
+    "build:dashboard": "npm --prefix frontend/dashboard run build",
+    "build:widget": "npm --prefix frontend/widget run build",
+    "build:realtime": "npm --prefix backend/realtime run build",
+    "build:all": "npm run build:dashboard && npm run build:widget && npm run build:realtime",
+    "test:dashboard": "npm --prefix frontend/dashboard run test",
+    "test:widget": "npm --prefix frontend/widget run test",
+    "test:realtime": "npm --prefix backend/realtime run test",
+    "test:django": "cd backend/django && .venv/bin/pytest",
+    "test:all": "npm run test:dashboard && npm run test:widget && npm run test:realtime && npm run test:django"
+  }
+}

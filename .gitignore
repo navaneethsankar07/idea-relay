@@ -60,6 +60,7 @@ yarn-error.log*
 pnpm-debug.log*
 
 # Build outputs
+*.tsbuildinfo
 /frontend/dashboard/dist/
 /frontend/widget/dist/
 /backend/realtime/dist/

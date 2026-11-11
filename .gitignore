@@ -1,0 +1,82 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Environment Variables & Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage/
+*.lcov
+.nyc_output
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build outputs
+/frontend/dashboard/dist/
+/frontend/widget/dist/
+/backend/realtime/dist/
+
+# IDE & Editor
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+Thumbs.db
+
+# Database & Persistent Data
+*.sqlite3
+*.db
+docker-data/
+postgres-data/
